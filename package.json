@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "prod": "node bin/prod.js",
+    "dev": "node bin/dev.js"
   },
   "devDependencies": {
     "babel-cli": "^6.1.18",
@@ -14,7 +16,10 @@
     "babel-preset-es2015": "^6.1.18",
     "chai": "^3.4.1",
     "chai-immutable": "^1.5.2",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "path": "^0.12.7",
+    "webpack": "^1.12.4",
+    "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
     "immutable": "^3.7.5"
