@@ -55,7 +55,7 @@ module.exports = {
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
                 test: /\.js/,
-                exclude: /(node_modules)/,
+                exclude: /(node_modules|config(\/environments\/|core)|bower_components)/,
                 loader: 'babel?cacheDirectory'
             }
         ],
@@ -65,3 +65,12 @@ module.exports = {
         ]
     }
 };
+
+// FOR DEBUG.
+function wrapRegexp(regexp, label) {
+    regexp.test = function (path) {
+        console.log(label, path);
+        return RegExp.prototype.test.call(this, path);
+    };
+    return regexp;
+}
