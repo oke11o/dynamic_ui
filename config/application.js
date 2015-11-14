@@ -1,16 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import App from  'views/layout'
+import InjectTapEventPlugin from 'react-tap-event-plugin'
 
-class Test extends React.Component {
-    static propTypes = {
-        asd: React.PropTypes.string
-    };
-    render () {
-        return (
-            <div>asdss</div>
-        )
-    }
-}
+InjectTapEventPlugin();
 
 
-ReactDOM.render(<Test/>, document.getElementById('app'));
+ReactDOM.render(<App/>, document.getElementById('app'));

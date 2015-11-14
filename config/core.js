@@ -33,7 +33,7 @@ module.exports = {
         extensions        : ['', '.webpack.js', '.web.js', '.js'],
         modulesDirectories: ['node_modules'],
         root              : [
-            './app'
+            path.resolve('app')
         ]
     },
     module : {
