@@ -1,7 +1,7 @@
 var webpack     = require('webpack');
 var path        = require('path');
 var packageJSON = require('./../package.json');
-
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     context: path.resolve(),
@@ -27,10 +27,11 @@ module.exports = {
             React    : 'react',
             ReactDOM : 'react-dom',
             Immutable: 'immutable'
-        })
+        }),
+        new ExtractTextPlugin("styles.css")
     ],
     resolve: {
-        extensions        : ['', '.webpack.js', '.web.js', '.js'],
+        extensions        : ['', '.webpack.js', '.web.js', '.js', '.jsx'],
         modulesDirectories: ['node_modules'],
         root              : [
             path.resolve('app')
@@ -57,9 +58,12 @@ module.exports = {
                 test  : /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
-                test   : /\.js/,
+                test   : /\.jsx?$/,
                 exclude: /(node_modules|config(\/environments\/|core)|bower_components)/,
                 loader : 'babel?cacheDirectory'
+            }, {
+                test  : /\.scss$/,
+                loader: ExtractTextPlugin.extract("css!sass?sourceMap")
             }
         ],
         noParse: [

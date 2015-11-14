@@ -1,4 +1,5 @@
-import {Styles, AppBar} from 'material-ui'
+import './styles.scss'
+import {Styles, AppBar, IconButton, Icons} from 'material-ui'
 
 const ThemeManager = Styles.ThemeManager;
 const LightRawTheme = Styles.LightRawTheme;
@@ -25,7 +26,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <AppBar title="Default"/>
+            <div {...this.props}>
+                <AppBar
+                    title="Title"
+                    iconElementLeft={null}>
+
+                </AppBar>
+            </div>
         )
     }
 }
