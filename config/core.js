@@ -6,13 +6,13 @@ var packageJSON = require('./../package.json');
 module.exports = {
     context: path.resolve(),
     entry  : {
-        app: ["./config/application.js"],
+        app    : ["./config/application.js"],
         vendors: Object.keys(packageJSON.dependencies)
     },
     output : {
-        path      : path.resolve("public"),
-        publicPath: "./",
-        filename  : "[name].js",
+        path         : path.resolve("public"),
+        publicPath   : "./",
+        filename     : "[name].js",
         chunkFilename: "[id].[chunkhash].js"
     },
     plugins: [
@@ -24,6 +24,11 @@ module.exports = {
             },
             _DEV_        : JSON.stringify(process.env.NODE_ENV === 'development'),
             _PROD_       : JSON.stringify(process.env.NODE_ENV === 'production')
+        }),
+        new webpack.ProvidePlugin({
+            React    : 'react',
+            ReactDOM : 'react-dom',
+            Immutable: 'immutable'
         })
     ],
     resolve: {
@@ -54,9 +59,9 @@ module.exports = {
                 test  : /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
-                test: /\.js/,
+                test   : /\.js/,
                 exclude: /(node_modules|config(\/environments\/|core)|bower_components)/,
-                loader: 'babel?cacheDirectory'
+                loader : 'babel?cacheDirectory'
             }
         ],
         noParse: [
