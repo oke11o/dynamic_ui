@@ -75,7 +75,7 @@ module.exports = {
                 loaders: ['react-hot', 'babel?cacheDirectory']
             }, {
                 test  : /\.scss$/,
-                loader: ExtractTextPlugin.extract("css!sass?sourceMap")
+                loader: "style!css!sass?sourceMap"
             }
         ],
         noParse: [

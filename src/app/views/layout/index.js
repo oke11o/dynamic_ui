@@ -32,7 +32,7 @@ class App extends React.Component {
     render() {
         console.log(this.props);
         return (
-            <div>
+            <div style={{backgroundColor:"#fff"}}>
                 <Header/>
                 <Content>
                     {this.props.children}
