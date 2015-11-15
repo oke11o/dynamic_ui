@@ -4,7 +4,9 @@ import mui from 'material-ui'
 const ThemeManager  = Styles.ThemeManager;
 const LightRawTheme = Styles.LightRawTheme;
 
-var AppBarStyles = {backgroundColor: Styles.Colors.blue600};
+var AppBarStyles = {
+    backgroundColor: Styles.Colors.blue600
+};
 var MenuStyles = {
     borderTop: "none",
     overflow: "hidden",
