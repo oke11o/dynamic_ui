@@ -30,11 +30,12 @@ class App extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <Header/>
-                <Content/>
+                <Content>
+                    {this.props.children}
+                </Content>
                 <Sidebar/>
             </div>
         )

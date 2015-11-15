@@ -11,7 +11,7 @@ class Content extends React.Component {
     render () {
         return (
             <div style={ContentStyles}>
-                sss
+                {this.props.children}
             </div>
         )
     }
