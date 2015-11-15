@@ -4,23 +4,23 @@ import mui from 'material-ui'
 const ThemeManager  = Styles.ThemeManager;
 const LightRawTheme = Styles.LightRawTheme;
 
-var AppBarStyles = {
+var AppBarStyles  = {
     backgroundColor: Styles.Colors.blue600
 };
-var MenuStyles = {
+var MenuStyles    = {
     borderTop: "none",
-    overflow: "hidden",
-    position: "absolute",
-    top: "64px",
-    width: "192px"
+    overflow : "hidden",
+    position : "absolute",
+    top      : "64px",
+    width    : "192px"
 };
 var ContentStyles = {
     borderLeft: "solid 1px #e0e0e0",
-    boxSizing: "border-box",
+    boxSizing : "border-box",
     marginLeft: "192px",
-    maxWidth: "896px",
-    minHeight: "800px",
-    padding: "24px 24px 24px 24px"
+    maxWidth  : "896px",
+    minHeight : "800px",
+    padding   : "24px 24px 24px 24px"
 };
 
 class App extends React.Component {
