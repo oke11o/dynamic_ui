@@ -59,7 +59,7 @@ module.exports = {
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
                 test   : /\.jsx?$/,
-                exclude: /(node_modules|config(\/environments\/|core)|bower_components)/,
+                include: [path.resolve('app'), path.resolve('config/application.js')],
                 loader : 'babel?cacheDirectory'
             }, {
                 test  : /\.scss$/,
