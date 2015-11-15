@@ -9,8 +9,6 @@ import Content from './content'
 
 
 
-
-
 class App extends React.Component {
 
     constructor() {
@@ -32,6 +30,7 @@ class App extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <Header/>
@@ -42,4 +41,4 @@ class App extends React.Component {
     }
 }
 
-export default App
+export default Connect()(App);

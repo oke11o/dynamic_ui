@@ -1,6 +1,6 @@
-var webpack     = require('webpack');
-var path        = require('path');
-var packageJSON = require('./../package.json');
+var webpack           = require('webpack');
+var path              = require('path');
+var packageJSON       = require('./../package.json');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -10,9 +10,14 @@ module.exports = {
         vendors: [
             "react",
             "react-dom",
+            "react-router",
+            "history",
             "immutable",
             "history/lib/createBrowserHistory",
-            "material-ui"
+            "material-ui",
+            "redux-thunk",
+            "redux",
+            "react-redux"
         ]
     },
     output : {
@@ -32,7 +37,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             React    : 'react',
             ReactDOM : 'react-dom',
-            Immutable: 'immutable'
+            Immutable: 'immutable',
+            Connect  : "react-redux/lib/components/connect.js"
         }),
         new ExtractTextPlugin("styles.css")
     ],
@@ -66,7 +72,7 @@ module.exports = {
             }, {
                 test   : /\.js$/,
                 include: [path.join(__dirname, '../app'), path.resolve('config/application.js'), path.resolve('config/routes.js')],
-                loaders : ['react-hot','babel?cacheDirectory']
+                loaders: ['react-hot', 'babel?cacheDirectory']
             }, {
                 test  : /\.scss$/,
                 loader: ExtractTextPlugin.extract("css!sass?sourceMap")
@@ -74,7 +80,8 @@ module.exports = {
         ],
         noParse: [
             /react\/lib\/(react|react-dom)/,
-            /immutable/
+            /immutable/,
+            /redux-thunk/
         ]
     }
 };
