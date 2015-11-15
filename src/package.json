@@ -13,11 +13,13 @@
   },
   "babel": {
     "presets": [
+      "es2015",
       "stage-0",
-      "react",
-      "es2015"
+      "react"
     ],
     "plugins": [
+      "syntax-decorators",
+      "transform-decorators",
       "transform-class-properties",
       "transform-flow-strip-types",
       "transform-object-rest-spread"
@@ -34,7 +36,9 @@
     "babel-cli": "^6.1.18",
     "babel-core": "^6.1.19",
     "babel-loader": "^6.1.0",
+    "babel-plugin-syntax-decorators": "^6.1.18",
     "babel-plugin-transform-class-properties": "^6.1.20",
+    "babel-plugin-transform-decorators": "^6.1.18",
     "babel-plugin-transform-flow-strip-types": "^6.1.18",
     "babel-plugin-transform-object-rest-spread": "^6.1.18",
     "babel-plugin-transform-react-constant-elements": "^6.1.20",

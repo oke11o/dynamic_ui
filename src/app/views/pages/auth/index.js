@@ -1,13 +1,13 @@
 import { Paper, TextField, RaisedButton } from 'material-ui'
 import './styles.scss'
 
-
 const LABEL_TEXT_LOGIN         = config.auth.form_view.labelTextLogin || "Login";
 const LABEL_TEXT_PASSWORD      = config.auth.form_view.labelTextPassword || "Password";
 const LABEL_TEXT_SUBMIT_BUTTON = config.auth.form_view.labelSubmitButton || "sign in";
 
 
 class LoginPage extends React.Component {
+
     render() {
         return (
             <Paper className="form-wrapper">
