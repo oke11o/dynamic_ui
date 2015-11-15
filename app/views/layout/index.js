@@ -54,7 +54,7 @@ class App extends React.Component {
                     title="Title"
                     zDepth={0}/>
                 <div style={ContentStyles}>
-                    s
+                    sss
                 </div>
                 <div style={MenuStyles}>
                     <Menu

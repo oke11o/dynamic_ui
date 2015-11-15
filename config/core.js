@@ -58,9 +58,9 @@ module.exports = {
                 test  : /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
-                test   : /\.jsx?$/,
-                include: [path.resolve('app'), path.resolve('config/application.js')],
-                loader : 'babel?cacheDirectory'
+                test   : /\.js$/,
+                include: [path.join(__dirname, '../app'), path.resolve('config/application.js')],
+                loaders : ['react-hot','babel?cacheDirectory']
             }, {
                 test  : /\.scss$/,
                 loader: ExtractTextPlugin.extract("css!sass?sourceMap")
@@ -68,7 +68,7 @@ module.exports = {
         ],
         noParse: [
             /react\/lib\/(react|react-dom)/,
-            /immutable/
+            /immutable/,
         ]
     }
 };
