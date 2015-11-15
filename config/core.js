@@ -68,7 +68,7 @@ module.exports = {
         ],
         noParse: [
             /react\/lib\/(react|react-dom)/,
-            /immutable/,
+            /immutable/
         ]
     }
 };
