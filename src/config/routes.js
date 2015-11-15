@@ -15,7 +15,7 @@ export function start() {
     ReactDOM.render(
         <Provider store={store}>
             <Router history={createBrowserHistory()}>
-                <Route path="/login" component={Login}/>
+                {config_dui ? config_dui.auth.to ? <Route path="/login" component={Login}/> : null : null}
                 <Route component={Layout}>
                     <Route path="*" component={Dynamic}/>
                 </Route>

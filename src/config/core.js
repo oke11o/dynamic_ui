@@ -17,7 +17,9 @@ module.exports = {
             "material-ui",
             "redux-thunk",
             "redux",
-            "react-redux"
+            "react-redux",
+            "lodash/lang.js",
+            "lodash/object/has.js"
         ]
     },
     output : {
