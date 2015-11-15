@@ -7,7 +7,13 @@ module.exports = {
     context: path.resolve(),
     entry  : {
         app    : ["./config/application.js"],
-        vendors: Object.keys(packageJSON.dependencies)
+        vendors: [
+            "react",
+            "react-dom",
+            "immutable",
+            "history/lib/createBrowserHistory",
+            "material-ui"
+        ]
     },
     output : {
         path         : path.resolve("public"),
@@ -59,7 +65,7 @@ module.exports = {
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
                 test   : /\.js$/,
-                include: [path.join(__dirname, '../app'), path.resolve('config/application.js')],
+                include: [path.join(__dirname, '../app'), path.resolve('config/application.js'), path.resolve('config/routes.js')],
                 loaders : ['react-hot','babel?cacheDirectory']
             }, {
                 test  : /\.scss$/,
