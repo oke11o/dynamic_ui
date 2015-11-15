@@ -1,27 +1,15 @@
-import './styles.scss'
-import {Styles, AppBar, Menu, MenuItem} from 'material-ui'
-import mui from 'material-ui'
-const ThemeManager  = Styles.ThemeManager;
-const LightRawTheme = Styles.LightRawTheme;
+import ThemeManager from 'material-ui/lib/styles/theme-manager'
+import LightRawTheme from 'material-ui/lib/styles/raw-themes/light-raw-theme'
 
-var AppBarStyles  = {
-    backgroundColor: Styles.Colors.blue600
-};
-var MenuStyles    = {
-    borderTop: "none",
-    overflow : "hidden",
-    position : "absolute",
-    top      : "64px",
-    width    : "192px"
-};
-var ContentStyles = {
-    borderLeft: "solid 1px #e0e0e0",
-    boxSizing : "border-box",
-    marginLeft: "192px",
-    maxWidth  : "896px",
-    minHeight : "800px",
-    padding   : "24px 24px 24px 24px"
-};
+
+import './styles.scss'
+import Header from './header'
+import Sidebar from './sidebar'
+import Content from './content'
+
+
+
+
 
 class App extends React.Component {
 
@@ -44,27 +32,11 @@ class App extends React.Component {
     }
 
     render() {
-        console.log(mui);
-
-
         return (
-            <div {...this.props}>
-                <AppBar
-                    style={AppBarStyles}
-                    title="Title"
-                    zDepth={0}/>
-                <div style={ContentStyles}>
-                    sss
-                </div>
-                <div style={MenuStyles}>
-                    <Menu
-                        menuItems={[{route:'/asd', text: 'ss'}]}
-                        autoWidth={true}
-                        hideable={false}
-                        visible={true}
-                        zDepth={0}>
-                    </Menu>
-                </div>
+            <div>
+                <Header/>
+                <Content/>
+                <Sidebar/>
             </div>
         )
     }
