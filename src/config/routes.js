@@ -16,7 +16,7 @@ export function start() {
         <Provider store={store}>
             <Router history={createBrowserHistory()}>
                 <Route path="/login" component={Login}/>
-                <Route path="/" component={Layout}>
+                <Route component={Layout}>
                     <Route path="*" component={Dynamic}/>
                 </Route>
             </Router>

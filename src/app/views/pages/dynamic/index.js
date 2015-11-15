@@ -1,9 +1,8 @@
 class DynamicPage extends React.Component {
 
     render () {
-        console.log(this.props);
         return (
-            <h1>as</h1>
+            <h1>sas</h1>
         )
     }
 }
