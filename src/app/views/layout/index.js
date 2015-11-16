@@ -1,12 +1,15 @@
-import ThemeManager from 'material-ui/lib/styles/theme-manager'
-import LightRawTheme from 'material-ui/lib/styles/raw-themes/light-raw-theme'
-
+import { Styles } from 'material-ui'
 
 import './styles.scss'
 import Header from './header'
 import Sidebar from './sidebar'
 import Content from './content'
 
+var { ThemeManager, LightRawTheme } = Styles;
+
+var myRawTheme = LightRawTheme;
+
+myRawTheme.palette.primary1Color = Styles.Colors.blue600;
 
 
 class App extends React.Component {
@@ -15,7 +18,7 @@ class App extends React.Component {
         super();
 
         this.state = {
-            muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
+            muiTheme: ThemeManager.getMuiTheme(myRawTheme)
         }
     }
 
@@ -30,7 +33,6 @@ class App extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div style={{backgroundColor:"#fff"}}>
                 <Header/>
@@ -42,5 +44,4 @@ class App extends React.Component {
         )
     }
 }
-
-export default Connect()(App);
+export default App;
