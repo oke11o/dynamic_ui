@@ -1,4 +1,5 @@
 import { Styles } from 'material-ui'
+import { Link } from 'react-router'
 
 import './styles.scss'
 import Header from './header'
@@ -6,11 +7,9 @@ import Sidebar from './sidebar'
 import Content from './content'
 
 var { ThemeManager, LightRawTheme } = Styles;
-
 var myRawTheme = LightRawTheme;
 
 myRawTheme.palette.primary1Color = Styles.Colors.blue600;
-
 
 class App extends React.Component {
 
@@ -37,7 +36,7 @@ class App extends React.Component {
             <div style={{backgroundColor:"#fff"}}>
                 <Header/>
                 <Content>
-                    {this.props.children}
+                    <Link to="/asd/ads/">{location.pathname}</Link>
                 </Content>
                 <Sidebar/>
             </div>
