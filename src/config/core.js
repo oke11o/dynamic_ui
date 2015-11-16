@@ -17,12 +17,14 @@ module.exports = {
             "material-ui",
             "redux-thunk",
             "redux",
-            "react-redux"
+            "react-redux",
+            "lodash/lang.js",
+            "lodash/object/has.js"
         ]
     },
     output : {
         path         : path.resolve("public"),
-        publicPath   : "./",
+        publicPath   : "/",
         filename     : "[name].js",
         chunkFilename: "[id].[chunkhash].js"
     },

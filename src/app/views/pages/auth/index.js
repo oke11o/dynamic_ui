@@ -1,9 +1,17 @@
 import { Paper, TextField, RaisedButton } from 'material-ui'
 import './styles.scss'
+import has from 'lodash/object/has'
 
-const LABEL_TEXT_LOGIN         = config.auth.form_view.labelTextLogin || "Login";
-const LABEL_TEXT_PASSWORD      = config.auth.form_view.labelTextPassword || "Password";
-const LABEL_TEXT_SUBMIT_BUTTON = config.auth.form_view.labelSubmitButton || "sign in";
+
+const LABEL_TEXT_LOGIN = has(config_dui, 'auth.form_view.label_text_login') ?
+    config_dui.auth.form_view.label_text_login : "Login";
+
+const LABEL_TEXT_PASSWORD = has(config_dui, 'auth.form_view.label_text_password') ?
+    config_dui.auth.form_view.label_text_password : "Password";
+
+const LABEL_TEXT_SUBMIT_BUTTON = has(config_dui, 'auth.form_view.label_submit_button') ?
+    config_dui.auth.form_view.label_submit_button : "sign in";
+
 
 
 class LoginPage extends React.Component {

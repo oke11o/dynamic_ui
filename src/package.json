@@ -51,7 +51,6 @@
     "css-loader": "^0.23.0",
     "extract-text-webpack-plugin": "^0.9.1",
     "fs": "0.0.2",
-    "lodash": "^3.10.1",
     "mocha": "^2.3.3",
     "node-sass": "^3.4.2",
     "path": "^0.12.7",
@@ -64,6 +63,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "lodash": "^3.10.1",
     "history": "^1.13.1",
     "immutable": "^3.7.5",
     "material-ui": "^0.13.2",
