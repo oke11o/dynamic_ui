@@ -1,10 +1,7 @@
-import InjectTapEventPlugin from 'react-tap-event-plugin'
-import Routes from './routes.js'
+import Initializers from './initializers/index'
 
 
-InjectTapEventPlugin();
-
-if (module.hot) {
-    module.hot.accept();
-}
-Routes.start();
+//if (module.hot) {
+//    module.hot.accept();
+//}
+Initializers();

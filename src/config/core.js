@@ -24,7 +24,7 @@ module.exports = {
     },
     output : {
         path         : path.resolve("public"),
-        publicPath   : "/",
+        publicPath   : "./",
         filename     : "[name].js",
         chunkFilename: "[id].[chunkhash].js"
     },
@@ -73,6 +73,7 @@ module.exports = {
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
                 test   : /\.js$/,
+                exclude: /(node_modules|bower_components)/,
                 include: [path.join(__dirname, '../app'), path.resolve('config/application.js'), path.resolve('config/routes.js')],
                 loaders: ['react-hot', 'babel?cacheDirectory']
             }, {

@@ -50,7 +50,11 @@ function envNameToDefine(env_name) {
                 defineENV['_' + envWithoutExt.toUpperCase() + '_'] = JSON.stringify(env_name === envWithoutExt);
             });
 
-            resolve(new webpack.DefinePlugin(defineENV));
+            resolve(new webpack.DefinePlugin(_.merge(defineENV, {
+                'process.env': {
+                    'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+                }
+            })));
         }).catch(function (err) {
             reject(err);
         });
