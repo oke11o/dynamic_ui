@@ -61,7 +61,7 @@ function concatConfigs(core_config, env_name) {
     return new Promise(function (resolve, reject) {
         getConfigFromEnv(env_name).then(function (env_config) {
 
-            var result_config = _.merge(env_config, core_config, function (env, core) {
+            var result_config = _.merge(env_config.webpack, core_config, function (env, core) {
                 if (_.isArray(core) && _.isArray(env)) {
                     return core.concat(env);
                 }
@@ -70,7 +70,9 @@ function concatConfigs(core_config, env_name) {
 
             envNameToDefine(env_name).then(function (define) {
                 result_config.plugins.push(define);
-
+                result_config.plugins.push(new webpack.DefinePlugin({
+                    APPLICATION: JSON.stringify(env_config.application)
+                }));
                 resolve(result_config);
             }).catch(function (err) {
 

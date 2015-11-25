@@ -40,7 +40,8 @@ module.exports = {
             React    : 'react',
             ReactDOM : 'react-dom',
             Immutable: 'immutable',
-            Connect  : "react-redux/lib/components/connect.js"
+            Connect  : "react-redux/lib/components/connect.js",
+            classNames: "classnames"
         }),
         new ExtractTextPlugin("styles.css")
     ],
@@ -73,7 +74,14 @@ module.exports = {
                 loader: "url?name=[hash].[ext]&limit=10000&mimetype=image/svg+xml"
             }, {
                 test   : /\.js$/,
-                include: [path.join(__dirname, '../app'), path.resolve('config/application.js'), path.resolve('config/routes.js')],
+                exclude: /(node_modules|bower_components)/,
+                include: [
+                    path.resolve('app'),
+                    path.resolve('utils'),
+                    path.resolve('config/application.js'),
+                    path.resolve('config/routes.js'),
+                    path.resolve('config/initializers')
+                ],
                 loaders: ['react-hot', 'babel?cacheDirectory']
             }, {
                 test  : /\.scss$/,
@@ -83,7 +91,8 @@ module.exports = {
         noParse: [
             /react\/lib\/(react|react-dom)/,
             /immutable/,
-            /redux-thunk/
+            /redux-thunk/,
+            /classnames/
         ]
     }
 };

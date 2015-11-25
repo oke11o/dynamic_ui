@@ -1,10 +1,10 @@
 var path = require('path');
 
 var webpack          = require('webpack');
-var webpackDevServer = require('webpack-dev-server');
+var WebpackDevServer = require('webpack-dev-server');
 
-var final_config = require('./final_config.js');
-var core_config  = require('./../config/core.js')
+var final_webpack_config = require('./final_webpack_config.js');
+var core_config  = require('./../config/boot.js');
 
 var Program = require('commander');
 Program
@@ -14,10 +14,8 @@ Program
     .parse(process.argv);
 
 
-final_config(Program.env, core_config).then(function (config) {
-
+final_webpack_config(Program.env, core_config).then(function (config) {
     var result_config = config;
-
     result_config.entry.app
         .push(
             'webpack-dev-server/client?http://' + Program.host + ':' + Program.port,
@@ -26,7 +24,7 @@ final_config(Program.env, core_config).then(function (config) {
 
     var compiler = webpack(result_config);
 
-    var server = new webpackDevServer(compiler, {
+    var server = new WebpackDevServer(compiler, {
         contentBase       : path.resolve('public'),
         hot               : true,
         stats             : {

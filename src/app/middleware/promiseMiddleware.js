@@ -1,6 +1,8 @@
-export default function promiseMiddleware() {
+
+export default function promiseMiddleware(store) {
     return (next) => (action) => {
-        const { promise, types, global = false, redirect404 = false, ...rest } = action;
+
+        const { promise, types, global = false, redirect404 = false, params = {}} = action;
 
         if (!promise) {
             return next(action);
@@ -9,42 +11,46 @@ export default function promiseMiddleware() {
         if (global) {
             next({type: 'PAGE_LOADING'});
         }
+        next({params, type: REQUEST});
 
-        next({...rest, type: REQUEST});
+
 
         return promise.then((res) => {
+            const RESPONSE = res.data;
+
+            if (RESPONSE.errorCode !== 0) {
+                next({
+                    params,
+                    errorCode   : RESPONSE.errorCode,
+                    errorMessage: RESPONSE.errorMessage,
+                    type        : FAILURE
+                });
+
+                if (global) {
+                    next({
+                        type        : 'PAGE_LOADING_FAILED',
+                        errorCode   : RESPONSE.errorCode,
+                        errorMessage: RESPONSE.errorMessage
+                    });
+                }
+
+            }
             next({
-                ...rest,
-                data  : res.result,
+                params,
+                data  : RESPONSE.result,
                 type  : SUCCESS
             });
+
+
             if (global) {
                 next({
                     type: 'PAGE_LOADING_COMPLETED'
                 });
             }
-        }).catch((err) => {
 
-            next({
-                ...rest,
-                errorCode   : err.errorCode,
-                errorMessage: err.errorMessage,
-                type        : FAILURE
-            });
+        }).catch((e) => {
 
-            if (global) {
-                next({
-                    type        : 'PAGE_LOADING_FAILED',
-                    errorCode   : err.errorCode,
-                    errorMessage: err.errorMessage
-                });
 
-            }
-            if (redirect404) {
-
-            }
-
-            console.error(err)
         });
     }
 }

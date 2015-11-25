@@ -21,10 +21,6 @@ class App extends React.Component {
         }
     }
 
-    static childContextTypes = {
-        muiTheme: React.PropTypes.object
-    };
-
     getChildContext() {
         return {
             muiTheme: this.state.muiTheme
@@ -32,15 +28,21 @@ class App extends React.Component {
     }
 
     render() {
+        console.log(this.props.children);
         return (
             <div style={{backgroundColor:"#fff"}}>
                 <Header/>
                 <Content>
-                    <Link to="/asd/ads/">{location.pathname}</Link>
+                    {this.props.children}
                 </Content>
                 <Sidebar/>
             </div>
         )
     }
 }
+
+App.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};
+
 export default App;
