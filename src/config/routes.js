@@ -5,6 +5,9 @@ import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore'
 
 import Login from 'views/pages/auth'
+import DynamicPage from 'views/pages/dynamic'
+import Layout from 'views/layout'
+
 const store = configureStore();
 const ROUTE_CONFIG = {
     childRoutes: [
@@ -13,15 +16,14 @@ const ROUTE_CONFIG = {
             component: Login
         }, {
             path: '/',
-            component: require('views/layout/index.js').default,
+            component: Layout,
+            indexRoute: {
+                component: DynamicPage
+            },
             childRoutes: [
                 {
                     path: '*',
-                    getComponent (location, cb) {
-                        require.ensure([], (require) => {
-                            cb(null, require('views/pages/auth/index.js').default)
-                        })
-                    }
+                    component: DynamicPage
                 }
             ]
         }

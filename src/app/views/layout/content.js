@@ -2,7 +2,6 @@ var ContentStyles = {
     borderLeft: "solid 1px #e0e0e0",
     boxSizing : "border-box",
     marginLeft: "192px",
-    maxWidth  : "896px",
     minHeight : "800px",
     padding   : "24px 24px 24px 24px"
 };
