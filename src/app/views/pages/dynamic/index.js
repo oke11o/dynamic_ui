@@ -1,13 +1,16 @@
 import FactoryComponents from 'views/components/index'
-import MockupButtons from 'mockups/button'
 import GridList from 'material-ui/lib/grid-list/grid-list'
+
+
+import Mockup from 'mockups/index'
+
 
 class DynamicPage extends React.Component {
 
     render() {
         return (
             <div className="mdl-grid">{
-                    MockupButtons.map((component) => {
+                    Mockup.map((component) => {
                         return FactoryComponents(component)
                     })
                 }</div>

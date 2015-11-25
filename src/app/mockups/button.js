@@ -8,7 +8,7 @@ export default [
         component_type: 'button',
         label         : 'Primary', // required
         primary       : true, // optional, default: default
-        cols          : 6
+        cols          : "3"
     }, {
         component_type: 'button',
         label         : 'secondary', // required
@@ -41,7 +41,6 @@ export default [
         ]
     }, {
         component_type: 'paper',
-        zDepth: 2, //optional, default: 1,
         child_components: [
             {
                 component_type: 'button',

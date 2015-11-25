@@ -1,7 +1,8 @@
 const Button = React.createFactory(require('./button').default);
 const Grid   = React.createFactory(require('./grid').default);
 const Paper  = React.createFactory(require('./paper').default);
-
+const Form   = React.createFactory(require('./form').default);
+const Input  = React.createFactory(require('./form/input').default);
 var count_components = 0;
 
 // TODO add basic_component with blackjack and...
@@ -38,16 +39,43 @@ class Factory {
 
     paper(props) {
         return Paper({
-            key: count_components,
-            zDepth: props.zDepth,
-            style : props.style,
+            key            : count_components,
+            zDepth         : props.zDepth,
+            style          : props.style,
             childComponents: props.child_components || [],
+            cols           : props.cols || 12
+        })
+    }
+
+    form(props) {
+        return Form({
+            childComponents: props.child_components || [],
+            key            : count_components
+        });
+    }
+    input (props) {
+        return Input({
+            key: count_components,
+            label: props.label,
+            labelStyle: props.label_style,
+            defaultValue: props.default_value,
+            hintText: props.hint_text,
+            hintStyle: props.hint_style,
+            underlineDisabledStyle: props.underline_disabled_style,
+            underlineStyle: props.underline_style,
+            value: props.value,
+            underlineFocusStyle: props.underline_focus_style,
+            errorText: props.error_text,
+            errorStyle: props.error_style,
+            multiLine: props.multi_line,
+            disabled: props.disabled,
+            type: props.type,
             cols: props.cols || 12
         })
     }
 }
 
-Factory.renderComponent = function (displayNameComponent:string, props:object) {
+Factory.createComponent = function (displayNameComponent:string, props:object) {
     var component;
 
     if (Factory.prototype[displayNameComponent] === undefined) {
@@ -65,5 +93,5 @@ Factory.renderComponent = function (displayNameComponent:string, props:object) {
 };
 
 export default function (component) {
-    return Factory.renderComponent(component.component_type, component);
+    return Factory.createComponent(component.component_type, component);
 }
