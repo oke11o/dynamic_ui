@@ -3,6 +3,9 @@ const Grid   = React.createFactory(require('./grid').default);
 const Paper  = React.createFactory(require('./paper').default);
 const Form   = React.createFactory(require('./form').default);
 const Input  = React.createFactory(require('./form/input').default);
+const Select = React.createFactory(require('./form/select').default);
+const Date   = React.createFactory(require('./form/date').default);
+
 var count_components = 0;
 
 // TODO add basic_component with blackjack and...
@@ -50,27 +53,49 @@ class Factory {
     form(props) {
         return Form({
             childComponents: props.child_components || [],
-            key            : count_components
+            key            : count_components,
+            cols           : props.cols || 12
         });
     }
-    input (props) {
+
+    input(props) {
         return Input({
-            key: count_components,
-            label: props.label,
-            labelStyle: props.label_style,
-            defaultValue: props.default_value,
-            hintText: props.hint_text,
-            hintStyle: props.hint_style,
+            key                   : count_components,
+            label                 : props.label,
+            labelStyle            : props.label_style,
+            defaultValue          : props.default_value,
+            hintText              : props.hint_text,
+            hintStyle             : props.hint_style,
             underlineDisabledStyle: props.underline_disabled_style,
-            underlineStyle: props.underline_style,
-            value: props.value,
-            underlineFocusStyle: props.underline_focus_style,
-            errorText: props.error_text,
-            errorStyle: props.error_style,
-            multiLine: props.multi_line,
-            disabled: props.disabled,
-            type: props.type,
-            cols: props.cols || 12
+            underlineStyle        : props.underline_style,
+            value                 : props.value,
+            underlineFocusStyle   : props.underline_focus_style,
+            errorText             : props.error_text,
+            errorStyle            : props.error_style,
+            multiLine             : props.multi_line,
+            disabled              : props.disabled,
+            type                  : props.type,
+            cols                  : props.cols || 12
+        })
+    }
+
+    select(props) {
+        return Select({
+            key          : count_components,
+            menuItems    : props.items,
+            hintText     : props.hint_text,
+            displayMember: props.display_member,
+            valueMember  : props.value_member,
+            label        : props.label,
+            cols         : props.cols || 12
+        })
+    }
+
+    date(props) {
+        return Date({
+            key: count_components,
+            hintText: props.hint_text,
+            locale: props.locale
         })
     }
 }

@@ -6,21 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     context: path.resolve(),
     entry  : {
-        app    : ["./config/application.js"],
-        vendors: [
-            "react",
-            "react-dom",
-            "react-router",
-            "history",
-            "immutable",
-            "history/lib/createBrowserHistory",
-            "material-ui",
-            "redux-thunk",
-            "redux",
-            "react-redux",
-            "lodash/lang.js",
-            "lodash/object/has.js"
-        ]
+        app    : ["./config/application.js"]
     },
     output : {
         path         : path.resolve("public"),
@@ -30,7 +16,6 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.CommonsChunkPlugin("vendors", "vendors.app.js", Infinity),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
