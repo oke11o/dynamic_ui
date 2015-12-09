@@ -1,8 +1,10 @@
-export default [
+module.exports = [
     {
         component_type: 'button',
         label         : "Default", // required
         flat          : true, // optional, default: raised
+        icon_name     : 'done',
+        href: '/grids?asd=aasd&as=11',
         cols          : 6
     }, {
         component_type: 'button',

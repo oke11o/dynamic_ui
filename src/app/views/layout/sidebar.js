@@ -12,14 +12,24 @@ class SideBar extends React.Component {
         return (
             <div style={MenuStyles}>
                 <Menu
-                    menuItems={[{route:'/asd', text: 'ss'}]}
+                    menuItems={this.props.items}
                     autoWidth={true}
+                    onItemTap={this._onClickItem.bind(this)}
                     hideable={false}
+                    active
                     zDepth={0}>
                 </Menu>
             </div>
         )
     }
+
+    _onClickItem (e, selected_id, item) {
+        this.context.history.pushState(null, item.route);
+    }
 }
+
+SideBar.contextTypes = {
+    history: React.PropTypes.object
+};
 
 export default SideBar

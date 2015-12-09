@@ -1,4 +1,3 @@
-
 export default function promiseMiddleware(store) {
     return (next) => (action) => {
 
@@ -14,31 +13,20 @@ export default function promiseMiddleware(store) {
         next({params, type: REQUEST});
 
 
-
         return promise.then((res) => {
-            const RESPONSE = res.data;
+            const RESPONSE = res.body;
 
-            if (RESPONSE.errorCode !== 0) {
+            if (Object.prototype.toString.call(RESPONSE) !== '[object Array]') {
                 next({
                     params,
-                    errorCode   : RESPONSE.errorCode,
-                    errorMessage: RESPONSE.errorMessage,
-                    type        : FAILURE
-                });
-
-                if (global) {
-                    next({
-                        type        : 'PAGE_LOADING_FAILED',
-                        errorCode   : RESPONSE.errorCode,
-                        errorMessage: RESPONSE.errorMessage
-                    });
-                }
-
+                    type: FAILURE
+                })
             }
+
             next({
                 params,
-                data  : RESPONSE.result,
-                type  : SUCCESS
+                data: RESPONSE,
+                type: SUCCESS
             });
 
 
@@ -49,8 +37,15 @@ export default function promiseMiddleware(store) {
             }
 
         }).catch((e) => {
+            next({
+                params,
+                type: FAILURE
+            });
+            next({
+                type: 'PAGE_LOADING_FAILED'
+            });
 
-
+            new Error(e);
         });
     }
 }

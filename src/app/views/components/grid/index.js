@@ -4,9 +4,15 @@ import FactoryComponents from './../index'
 
 class Grid extends React.Component {
     render() {
-        var classColGrid = classNames("mdl-cell", {
-            ["mdl-cell--" + this.props.cols + "-col"]: this.props.cols
-        });
+        var classColGrid;
+
+        if (this.props.cols) {
+            classColGrid = classNames("mdl-cell", {
+                ["mdl-cell--" + this.props.cols + "-col"]: this.props.cols
+            });
+        } else {
+            classColGrid = classNames("mdl-grid");
+        }
         return (
             <div style={this.props.style} className={classColGrid}>
                 {this.props.childComponents.map((component) => {

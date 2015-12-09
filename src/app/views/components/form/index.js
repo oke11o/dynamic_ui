@@ -1,15 +1,35 @@
 import ColHelper from './../helpers/col'
 import FactoryComponents from './../index'
+import getFormData from 'get-form-data'
+import ContentActions from 'actions/content'
 
 class Form extends React.Component {
     render () {
         return (
-            <form>
+            <form encType="multipart/form-data" onSubmit={this._onSubmit.bind(this)}>
                 {this.props.childComponents.map((component) => {
                     return FactoryComponents(component);
                 })}
             </form>
         )
+    }
+
+    _onSubmit(e) {
+        e.preventDefault();
+        const DATA   = getFormData(e.target);
+        var formData = new FormData();
+
+        for (let key in DATA) {
+            if (DATA.hasOwnProperty(key)) {
+                formData.append(key, DATA[key]);
+            }
+        }
+        this.props.dispatch(ContentActions.push_data({
+            data       : formData,
+            key        : this.props.key,
+            to         : this.props.to,
+            destination: this.props.destination
+        }));
     }
 }
 
@@ -19,4 +39,4 @@ if (_DEVELOPMENT_) {
     };
 }
 
-export default ColHelper(Form)
+export default Connect()(ColHelper(Form));

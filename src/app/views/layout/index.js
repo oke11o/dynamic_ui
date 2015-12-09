@@ -5,6 +5,8 @@ import './styles.scss'
 import Header from './header'
 import Sidebar from './sidebar'
 import Content from './content'
+import MenuActions from 'actions/menu'
+import ContentActions from 'actions/content'
 
 var { ThemeManager, LightRawTheme } = Styles;
 var myRawTheme = LightRawTheme;
@@ -27,22 +29,31 @@ class App extends React.Component {
         }
     }
 
+    componentWillMount () {
+        this.props.dispatch(MenuActions.fetch_menu());
+    }
+
     render() {
-        console.log(this.props.children);
         return (
             <div style={{backgroundColor:"#fff"}}>
                 <Header/>
                 <Content>
                     {this.props.children}
                 </Content>
-                <Sidebar/>
+                <Sidebar dispatch={this.props.dispatch}  items={this.props.menu}/>
             </div>
         )
     }
 }
 
+App.contextTypes = {
+    history: React.PropTypes.object
+};
+
 App.childContextTypes = {
     muiTheme: React.PropTypes.object
 };
 
-export default App;
+export default Connect(state => ({
+    menu: state.menu.get('items').toJS()
+}))(App);

@@ -17,6 +17,7 @@ class Input extends React.Component {
                 underlineFocusStyle={this.props.underlineFocusStyle}
                 underlineDisabledStyle={this.props.underlineDisabledStyle}
                 fullWidth
+                name={this.props.name}
                 errorText={this.props.errorText}
                 errorStyle={this.props.errorStyle}
                 disabled={this.props.disabled}

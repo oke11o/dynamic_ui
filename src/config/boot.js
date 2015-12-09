@@ -11,8 +11,7 @@ module.exports = {
     output : {
         path         : path.resolve("public"),
         publicPath   : "/",
-        filename     : "[name].js",
-        chunkFilename: "[id].[chunkhash].js"
+        filename     : "[name].js"
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
@@ -26,7 +25,8 @@ module.exports = {
             ReactDOM : 'react-dom',
             Immutable: 'immutable',
             Connect  : "react-redux/lib/components/connect.js",
-            classNames: "classnames"
+            classNames: "classnames",
+            Request: path.resolve("config/initializers/api.js")
         }),
         new ExtractTextPlugin("styles.css")
     ],
