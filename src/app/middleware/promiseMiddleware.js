@@ -35,7 +35,7 @@ export default function promiseMiddleware(store) {
                     type: 'PAGE_LOADING_COMPLETED'
                 });
             }
-
+            return null
         }).catch((e) => {
             next({
                 params,
@@ -45,7 +45,7 @@ export default function promiseMiddleware(store) {
                 type: 'PAGE_LOADING_FAILED'
             });
 
-            new Error(e);
+            console.error(e);
         });
     }
 }

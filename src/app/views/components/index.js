@@ -4,14 +4,15 @@ const RadioButtonGroup = React.createFactory(require('material-ui/lib/radio-butt
 const Toggle           = React.createFactory(require('material-ui/lib/toggle'))
 const Button           = React.createFactory(require('./button').default);
 const Grid             = React.createFactory(require('./grid').default);
-const Paper            = React.createFactory(require('./paper').default);
-const Form             = React.createFactory(require('./form').default);
-const Input            = React.createFactory(require('./form/input').default);
-const Select           = React.createFactory(require('./form/select').default);
-const Date             = React.createFactory(require('./form/date').default);
-const Table            = React.createFactory(require('./table').default);
-const FileInput        = React.createFactory(require('./form/file_input').default);
-var count_components   = 0;
+const Paper          = React.createFactory(require('./paper').default);
+const Form           = React.createFactory(require('./form').default);
+const Input          = React.createFactory(require('./form/input').default);
+const Select         = React.createFactory(require('./form/select').default);
+const Date           = React.createFactory(require('./form/date').default);
+const Table          = React.createFactory(require('./table').default);
+const FileInput      = React.createFactory(require('./form/file_input').default);
+const Block          = React.createFactory(require('./block/index.js').default);
+var count_components = 0;
 
 // TODO add basic_component with blackjack and...
 
@@ -64,6 +65,7 @@ class Factory {
             key            : count_components,
             cols           : props.cols || 12,
             to             : props.to,
+            method         : props.method,
             destination    : props.destination
         });
     }
@@ -163,6 +165,13 @@ class Factory {
         return FileInput({
             key: count_components,
             cols: props.cols || 12
+        })
+    }
+
+    block(props) {
+        return Block({
+            key: count_components,
+            id : props.id
         })
     }
 }

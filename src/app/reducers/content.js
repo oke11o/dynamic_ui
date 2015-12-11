@@ -1,7 +1,8 @@
 import {ActionType} from 'constants/content'
 
 const initialState = Immutable.Map({
-    components: []
+    components: [],
+    blocks: []
 });
 
 
@@ -25,10 +26,14 @@ export default function content(state = initialState, action) {
             return state;
 
         case ActionType.PUSH_DATA_COMPLETED:
-            var components = state.get('components');
+            var blocks = [];
 
-            console.log(getComponentById(components, action.params.destination));
-            return state;
+            action.data.forEach(component => {
+                blocks.push(Object.assign(component, {id: action.params.destination}));
+            });
+
+
+            return state.set('blocks', blocks);
 
         case ActionType.PUSH_DATA_FAILED:
             return state;
@@ -38,13 +43,3 @@ export default function content(state = initialState, action) {
     }
 }
 
-
-function getComponentById (components, id) {
-    return components.map(component => {
-        if (typeof component.id !== 'undefined' && component.id === id) {
-            return component;
-        } else {
-            return getComponentById(component, id);
-        }
-    });
-}

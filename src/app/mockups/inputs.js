@@ -118,7 +118,7 @@ module.exports = [
             }
         ]
     }, {
-        component_type: 'paper',
+        component_type: 'block',
         id: 'ttt',
         child_component: []
     }
