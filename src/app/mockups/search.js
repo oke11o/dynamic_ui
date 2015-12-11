@@ -5,7 +5,7 @@ module.exports = [
             {
                 component_type  : 'form',
                 to: '/search_result',
-                destination: 'search_result',
+                redirect_to:'/refresh_block',
                 child_components: [
                     {
                         component_type  : 'paper',

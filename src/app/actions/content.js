@@ -9,7 +9,8 @@ export default {
 
         return {
             types  : [ActionType.FETCH_CONTENT, ActionType.FETCH_CONTENT_COMPLETED, ActionType.FETCH_CONTENT_FAILED],
-            promise
+            promise,
+            global: true
         }
     },
 
@@ -23,6 +24,14 @@ export default {
                 key        : attr.key,
                 destination: attr.destination
             }
+        }
+    },
+
+    refresh_req (location, params = {}) {
+        return {
+            types: [ActionType.REFRESH_REQUEST, ActionType.REFRESH_REQUEST_COMPLETED, ActionType.REFRESH_REQUEST_FAILED],
+            promise: Request.get(`${location}`),
+            params
         }
     }
 }

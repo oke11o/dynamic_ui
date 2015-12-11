@@ -1,6 +1,6 @@
 {
   "name": "dynamic-ui",
-  "version": "0.0.1",
+  "version": "0.1.6",
   "description": "This project was created for fast generate user interface from JSON data",
   "repository": "https://github.com/AnthonySchurov/dynamic_ui",
   "bugs": "https://github.com/AnthonySchurov/dynamic_ui/issues",
@@ -9,8 +9,10 @@
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive",
     "test:watch": "npm run test -- --watch",
     "run": "node tools/run.js",
-    "build": "node tools/build.js"
+    "build": "node tools/build.js",
+    "prepublish": "npm run build"
   },
+  "main": "public/dynamic-ui.js",
   "devDependencies": {
     "babel-cli": "^6.1.18",
     "babel-core": "^6.1.19",
@@ -50,6 +52,7 @@
     "material-ui": "^0.14.0-rc1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-motion": "^0.3.1",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0",
     "react-tap-event-plugin": "^0.2.1",

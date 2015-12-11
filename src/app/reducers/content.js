@@ -2,7 +2,9 @@ import {ActionType} from 'constants/content'
 
 const initialState = Immutable.Map({
     components: [],
-    blocks: []
+    blocks: [],
+    page_loading: false,
+    refresh_blocks: []
 });
 
 
@@ -32,10 +34,34 @@ export default function content(state = initialState, action) {
                 blocks.push(Object.assign(component, {id: action.params.destination}));
             });
 
-
             return state.set('blocks', blocks);
 
         case ActionType.PUSH_DATA_FAILED:
+            return state;
+
+        case ActionType.PAGE_LOADING:
+            return state.set('page_loading', true);
+
+        case ActionType.PAGE_LOADING_COMPLETED:
+            return state.set('page_loading', false);
+
+        case ActionType.PAGE_LOADING_FAILED:
+            return state.set('page_loading', false);
+
+
+        case ActionType.REFRESH_REQUEST:
+            return state;
+
+        case ActionType.REFRESH_REQUEST_COMPLETED:
+            var blocks = [];
+
+            action.data.forEach(component => {
+                blocks.push(Object.assign(component, {id: action.params.destination}));
+            });
+
+            return state.set('refresh_blocks', blocks);
+
+        case ActionType.REFRESH_REQUEST_FAILED:
             return state;
 
         default:

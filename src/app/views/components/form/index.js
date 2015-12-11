@@ -33,11 +33,7 @@ class Form extends React.Component {
                 destination: this.props.destination
             }));
         } else {
-            // TODO validation props.to
-            this.context.history.replaceState({
-                method: this.props.method === 'POST' ? 'POST' : 'GET',
-                data: this.props.method === 'POST' ? formData : DATA
-            }, this.props.to, this.props.method === 'POST' ? formData : DATA);
+            this.context.history.pushState(null, this.props.redirect_to);
         }
     }
 }

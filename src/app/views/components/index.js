@@ -12,6 +12,7 @@ const Date           = React.createFactory(require('./form/date').default);
 const Table          = React.createFactory(require('./table').default);
 const FileInput      = React.createFactory(require('./form/file_input').default);
 const Block          = React.createFactory(require('./block/index.js').default);
+const RefreshBlock   = React.createFactory(require('./refresh_block').default);
 var count_components = 0;
 
 // TODO add basic_component with blackjack and...
@@ -66,6 +67,7 @@ class Factory {
             cols           : props.cols || 12,
             to             : props.to,
             method         : props.method,
+            redirect_to    : props.redirect_to,
             destination    : props.destination
         });
     }
@@ -172,6 +174,14 @@ class Factory {
         return Block({
             key: count_components,
             id : props.id
+        })
+    }
+
+    refresh_block(props) {
+        return RefreshBlock({
+            key: count_components,
+            to : props.to,
+            interval: props.interval,
         })
     }
 }
