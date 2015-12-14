@@ -62,13 +62,14 @@ class Factory {
 
     form(props) {
         return Form({
-            childComponents: props.child_components || [],
-            key            : count_components,
-            cols           : props.cols || 12,
-            to             : props.to,
-            method         : props.method,
-            redirect_to    : props.redirect_to,
-            destination    : props.destination
+            childComponents : props.child_components || [],
+            key             : count_components,
+            cols            : props.cols || 12,
+            to              : props.to,
+            method          : props.method,
+            redirect_to     : props.redirect_to,
+            destination     : props.destination,
+            crearAfterSubmit: props.clear_after_submit
         });
     }
 

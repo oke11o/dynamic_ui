@@ -1,7 +1,7 @@
 export default function promiseMiddleware(store) {
     return (next) => (action) => {
 
-        const { promise, types, global = false, redirect404 = false, params = {}} = action;
+        const { promise, types, global = false, redirect404 = false, params = {}, redirectTo = false} = action;
 
         if (!promise) {
             return next(action);
@@ -28,6 +28,10 @@ export default function promiseMiddleware(store) {
                 data: RESPONSE,
                 type: SUCCESS
             });
+
+            if (redirectTo) {
+                store.getState().history.get('history').pushState(null, redirectTo);
+            }
 
 
             if (global) {

@@ -1,6 +1,6 @@
 {
   "name": "dynamic-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "This project was created for fast generate user interface from JSON data",
   "repository": "https://github.com/AnthonySchurov/dynamic_ui",
   "bugs": "https://github.com/AnthonySchurov/dynamic_ui/issues",

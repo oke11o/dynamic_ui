@@ -1,12 +1,12 @@
 const initialState = Immutable.Map({
     router: {},
-    history: Immutable.List()
+    history: {}
 });
-// TODO add history session
+
 export default function history(state = initialState, action) {
     switch (action.type) {
         case 'ROUTE':
-            return state.set('router', action.res);
+            return state.set('router', action.routes).set('history', action.history);
 
         default:
             return state

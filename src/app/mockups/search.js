@@ -4,8 +4,8 @@ module.exports = [
         child_components: [
             {
                 component_type  : 'form',
-                to: '/search_result',
-                redirect_to:'/refresh_block',
+                to              : '/search_result',
+                redirect_to     : '/typography',
                 child_components: [
                     {
                         component_type  : 'paper',
@@ -32,9 +32,13 @@ module.exports = [
                     }
                 ]
             }, {
-                id: 'search_result',
-                component_type: 'block',
-                child_component: []
+                id             : 'search_result',
+                component_type : 'block',
+                child_component: [{
+                    component_type: 'text',
+                    tag           : 'h1',
+                    text          : 'as'
+                }]
             }
         ]
     }

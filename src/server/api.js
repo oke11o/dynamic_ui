@@ -53,7 +53,7 @@ app.get('/buttons', function (req, res) {
 app.get('/grids', function (req, res) {
     setTimeout(() => {
         res.json(grids_mockup)
-    }, 100000);
+    }, 2000);
 });
 
 app.get('/typography', function (req, res) {

@@ -23,7 +23,8 @@ export default {
             params : {
                 key        : attr.key,
                 destination: attr.destination
-            }
+            },
+            redirectTo: attr.redirect_to
         }
     },
 

@@ -29,8 +29,19 @@ class App extends React.Component {
         }
     }
 
+    componentWillReceiveProps () {
+
+    }
+
     componentWillMount () {
         this.props.dispatch(MenuActions.fetch_menu());
+        this.context.history.listen((location, routes) => {
+            this.props.dispatch({
+                type: 'ROUTE',
+                routes: routes,
+                history: this.context.history
+            })
+        })
     }
 
     render() {

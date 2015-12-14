@@ -25,15 +25,18 @@ class Form extends React.Component {
             }
         }
 
-        if (this.props.destination) {
+        if (this.props.to) {
             this.props.dispatch(ContentActions.push_data({
                 data       : formData,
                 key        : this.props.key,
                 to         : this.props.to,
-                destination: this.props.destination
+                destination: this.props.destination,
+                redirect_to: this.props.redirect_to
             }));
-        } else {
-            this.context.history.pushState(null, this.props.redirect_to);
+        }
+
+        if (this.props.clearAfterSubmit) {
+            e.target.reset();
         }
     }
 }
