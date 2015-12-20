@@ -7,25 +7,25 @@ menu in the sidebar is constructed with respect to a response from the api - / g
 ~~~json
 [
     {
-        route: '/ad',
-        text: 'Unicorn'
+        "route": "/ad",
+        "text": "Unicorn"
     }, {
-        route: '/da',
-        text: 'Pony'
+        "route": "/da",
+        "text": "Pony"
     }, {
-        divider: true
+        "divider": true
     }, {
-        route: '/asd',
-        text: 'Taddy'
+        "route": "/asd",
+        "text": "Taddy"
     }, {
-        divider: true
+        "divider": true
     }, {
-        route: '/asd',
-        text: 'Marry',
-        subroutes: [
+        "route": "/asd",
+        "text": "Marry",
+        "subroutes": [
             {
-                route: '/hope',
-                text: 'Hope'
+                "route": "/hope",
+                "text": "Hope"
             }
         ]
     }
