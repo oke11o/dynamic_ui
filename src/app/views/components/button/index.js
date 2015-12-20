@@ -21,6 +21,7 @@ class Button extends React.Component {
                     label={this.props.label}
                     type={this.props.type}
                     primary={this.props.primary}
+                    disabled={this.props.disabled}
                     onTouchTap={this._onClick.bind(this)}
                     secondary={this.props.secondary}>{icon}</FlatButton>;
                 break;
@@ -28,6 +29,7 @@ class Button extends React.Component {
             case this.props.floating:
                 return <FloatingActionButton
                     style={this.props.style}
+                    disabled={this.props.disabled}
                     type={this.props.type}
                     label={this.props.label}
                     primary={this.props.primary}
@@ -41,6 +43,7 @@ class Button extends React.Component {
                     style={this.props.style}
                     type={this.props.type}
                     label={this.props.label}
+                    disabled={this.props.disabled}
                     onTouchTap={this._onClick.bind(this)}
                     primary={this.props.primary}
                     secondary={this.props.secondary}>{icon}</RaisedButton>;
@@ -48,7 +51,7 @@ class Button extends React.Component {
     }
 
     _onClick() {
-        if (this.props.href && typeof this.props.href === 'string') {
+        if (!this.props.disabled && this.props.href && typeof this.props.href === 'string') {
             if (this.props.href.charAt(0) !== '/') {
                 window.location = this.props.href;
             } else {

@@ -7,6 +7,7 @@ import Sidebar from './sidebar'
 import Content from './content'
 import MenuActions from 'actions/menu'
 import ContentActions from 'actions/content'
+import Connect from 'react-redux/lib/components/connect'
 
 var { ThemeManager, LightRawTheme } = Styles;
 var myRawTheme = LightRawTheme;
@@ -66,5 +67,5 @@ App.childContextTypes = {
 };
 
 export default Connect(state => ({
-    menu: state.menu.get('items').toJS()
+    menu: state.menu.get('items')
 }))(App);

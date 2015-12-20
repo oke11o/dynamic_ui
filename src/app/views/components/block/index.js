@@ -1,4 +1,5 @@
 import FactoryComponents from './../index'
+import Connect from 'react-redux/lib/components/connect'
 
 
 class Block extends React.Component {

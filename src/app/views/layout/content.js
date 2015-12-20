@@ -1,10 +1,12 @@
 import CircularProgress from 'material-ui/lib/circular-progress'
 import {spring, Motion, presets} from 'react-motion'
+import Connect from 'react-redux/lib/components/connect'
+import _has from 'lodash.has'
 var ContentStyles = {
     borderLeft: "solid 1px #e0e0e0",
     boxSizing : "border-box",
-    marginLeft: "192px",
-    minHeight : "800px",
+    marginLeft: _has(window, 'config_dui.layout.sidebar.width') ? window.config_dui.layout.sidebar.width : "192px",
+    minHeight : "93vh",
     padding   : "24px 24px 24px 24px"
 };
 

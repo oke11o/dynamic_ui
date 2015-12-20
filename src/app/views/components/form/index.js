@@ -2,6 +2,7 @@ import ColHelper from './../helpers/col'
 import FactoryComponents from './../index'
 import getFormData from 'get-form-data'
 import ContentActions from 'actions/content'
+import Connect from 'react-redux/lib/components/connect'
 
 class Form extends React.Component {
     render () {

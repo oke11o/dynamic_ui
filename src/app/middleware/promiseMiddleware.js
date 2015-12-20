@@ -49,6 +49,7 @@ export default function promiseMiddleware(store) {
                 type: 'PAGE_LOADING_FAILED'
             });
 
+        }).error(e => {
             console.error(e);
         });
     }

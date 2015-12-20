@@ -1,6 +1,6 @@
 var express = require('express');
 var app     = express();
-
+var path = require('path');
 
 var button_mockup = require('./../app/mockups/button.js');
 var grids_mockup = require('./../app/mockups/grids.js');
@@ -27,6 +27,8 @@ app.get('/get-menu', function (req, res) {
             route: '/buttons',
             text : 'Buttons'
         }, {
+            divider: true
+        }, {
             route: '/grids',
             text: 'Grids'
         }, {
@@ -38,6 +40,15 @@ app.get('/get-menu', function (req, res) {
         }, {
             route: '/search',
             text: 'Search'
+        }, {
+            route: '/download',
+            text: 'download via ajax',
+            subroutes: [
+                {
+                    route: '/asd',
+                    text: 'asdasd'
+                }
+            ]
         }
     ])
 });
@@ -76,6 +87,12 @@ app.post('/search_result', function (req, res) {
 });
 app.post('/search', function (req, res) {
     res.json(search_response_mockup)
+});
+
+app.get('/download', function (req, res) {
+    var file = path.resolve('./public/index.html');
+    console.log(file);
+    res.download(file);
 });
 var i = 0;
 

@@ -24,7 +24,6 @@ module.exports = {
             React    : 'react',
             ReactDOM : 'react-dom',
             Immutable: 'immutable',
-            Connect  : "react-redux/lib/components/connect.js",
             classNames: "classnames",
             Request: path.resolve("config/initializers/api.js")
         }),

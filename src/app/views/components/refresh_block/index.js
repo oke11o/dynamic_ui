@@ -1,5 +1,7 @@
 import FactoryComponents from './../index'
 import ContentActions from 'actions/content'
+import Connect from 'react-redux/lib/components/connect'
+
 var ref_block_id = 0;
 class RefreshBlock extends React.Component {
 

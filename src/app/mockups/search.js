@@ -34,11 +34,13 @@ module.exports = [
             }, {
                 id             : 'search_result',
                 component_type : 'block',
-                child_component: [{
-                    component_type: 'text',
-                    tag           : 'h1',
-                    text          : 'as'
-                }]
+                child_component: [
+                    {
+                        component_type: 'text',
+                        tag           : 'h1',
+                        text          : 'as'
+                    }
+                ]
             }
         ]
     }

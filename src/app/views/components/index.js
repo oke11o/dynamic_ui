@@ -32,6 +32,7 @@ class Factory {
             mini     : props.mini,
             cols     : props.cols || 12,
             style    : props.style,
+            disabled : props.disabled,
             iconName : props.icon_name,
             iconStyle: props.icon_style,
             href     : props.href,
@@ -103,7 +104,8 @@ class Factory {
             displayMember: props.display_member,
             valueMember  : props.value_member,
             label        : props.label,
-            cols         : props.cols || 12
+            cols         : props.cols || 12,
+            name         : props.name
         })
     }
 
@@ -184,6 +186,12 @@ class Factory {
             to : props.to,
             interval: props.interval,
         })
+    }
+
+    html(props) {
+        return React.createElement(props.tag, Object.assign(props.attributes || {}, {
+            key: count_components
+        }), props.child_components ? props.child_components.map(component => Factory.createComponent(component.component_type, component)) : props.text)
     }
 }
 

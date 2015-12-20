@@ -104,6 +104,25 @@ module.exports = [
                                 cols: 6,
                                 name: 'file'
                             },{
+                                component_type: 'select',
+                                value_member  : "id",
+                                label         : 'asd',
+                                cols          : 3,
+                                name          : 'as',
+                                items         : [
+                                    {
+                                        id     : 1,
+                                        payload: 1,
+                                        name   : 'asd',
+                                        text   : 'Never'
+                                    }, {
+                                        id     : 2,
+                                        payload: 2,
+                                        name   : 'asd',
+                                        text   : 'Nesver'
+                                    }
+                                ]
+                            }, {
                                 component_type: 'button',
                                 type: 'submit',
                                 label: 'Submit',

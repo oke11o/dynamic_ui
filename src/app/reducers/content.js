@@ -16,7 +16,7 @@ export default function content(state = initialState, action) {
      * for fetch cont
      */
         case ActionType.FETCH_CONTENT:
-            return state;
+            return state.set('components', []);
 
         case ActionType.FETCH_CONTENT_COMPLETED:
             return state.set('components', action.data);
@@ -25,10 +25,10 @@ export default function content(state = initialState, action) {
             return state;
 
         case ActionType.PUSH_DATA:
-            return state;
+            return state.set('blocks', []);
 
         case ActionType.PUSH_DATA_COMPLETED:
-            var blocks = [];
+            let blocks = [];
 
             action.data.forEach(component => {
                 blocks.push(Object.assign(component, {id: action.params.destination}));
@@ -50,13 +50,13 @@ export default function content(state = initialState, action) {
 
 
         case ActionType.REFRESH_REQUEST:
-            return state;
+            return state.set('refresh_blocks', []);
 
         case ActionType.REFRESH_REQUEST_COMPLETED:
-            var blocks = [];
+            let refresh_blocks = [];
 
             action.data.forEach(component => {
-                blocks.push(Object.assign(component, {id: action.params.destination}));
+                refresh_blocks.push(Object.assign(component, {id: action.params.destination}));
             });
 
             return state.set('refresh_blocks', blocks);
