@@ -25,10 +25,13 @@ class DynamicPage extends React.Component {
             if (!searched) {
 
                 // TODO check first element have property route
-
                 this.props.dispatch(ContentActions.fetch_content({pathname: nextProps.menu[0].route}));
             }
+
         } else if (this.props.location !== nextProps.location) {
+            this.props.requests.filter(request => request.get('type') === 'content').forEach(request => {
+               request.get('instance').abort();
+            });
             this.props.dispatch(ContentActions.fetch_content(nextProps.location));
         }
     }
@@ -49,5 +52,6 @@ DynamicPage.contextTypes = {
 
 export default Connect(state => ({
     content: state.content.get('components'),
-    menu: state.menu.get('items')
+    menu: state.menu.get('items'),
+    requests: state.request.get('requests')
 }))(DynamicPage)

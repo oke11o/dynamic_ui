@@ -16,14 +16,23 @@ export default function request(state = initialState, action) {
             return state.set('requests', state.get('requests').push(new RequestRecord(action.data)));
 
         case ActionType.REQUEST_COMPLETED:
-            return state.deleteIn(
-                ['requests', state.get('requests').findIndex(request => request.get('id') === action.data.id)]
-            );
+            return deleteRequest(state, action.data.id);
 
         case ActionType.REQUEST_REJECT:
-            return state;
+            let finded_request = state.getIn([
+                    'requests',
+                    state.get('requests').findIndex(request => request.get('id') === action.data.id),
+                    'instance'
+                ], Immutable.Map());
+            return deleteRequest(state, action.data.id);
 
         default:
             return state;
     }
+}
+
+function deleteRequest(state, id) {
+    return state.deleteIn(
+        ['requests', state.get('requests').findIndex(request => request.get('id') === id)]
+    );
 }
