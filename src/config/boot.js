@@ -10,8 +10,7 @@ module.exports = {
     },
     output : {
         path         : path.resolve("public"),
-        publicPath   : "/",
-        filename     : "dynamic-ui.js"
+        publicPath   : "/"
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),

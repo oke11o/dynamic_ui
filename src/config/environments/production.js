@@ -4,6 +4,9 @@ var webpack = require('webpack');
 module.exports = {
     webpack: {
         debug      : false,
+        output: {
+            filename: 'dynamic-ui.min.js'
+        },
         plugins    : [
             {
                 apply: function (compiler) {

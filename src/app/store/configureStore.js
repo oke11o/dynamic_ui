@@ -3,27 +3,40 @@ import thunk from 'redux-thunk'
 
 import promiseMiddleware from 'middleware/promiseMiddleware'
 import rootReducer from 'reducers'
-import createLogger from 'redux-logger';
-const logger = createLogger({
-    stateTransformer: (state) => {
-        let newState = {};
 
-        for (var i of Object.keys(state)) {
-            if (Immutable.Iterable.isIterable(state[i])) {
-                newState[i] = state[i].toJS();
-            } else {
-                newState[i] = state[i];
+var createStoreWithMiddleware;
+
+if (_DEVELOPMENT_) {
+    var createLogger = require('redux-logger');
+    const logger = createLogger({
+        stateTransformer: (state) => {
+            let newState = {};
+
+            for (var i of Object.keys(state)) {
+                if (Immutable.Iterable.isIterable(state[i])) {
+                    newState[i] = state[i].toJS();
+                } else {
+                    newState[i] = state[i];
+                }
             }
-        };
 
-        return newState;
-    }
-});
-var createStoreWithMiddleware = compose(
-    applyMiddleware(
-        thunk, promiseMiddleware, logger
-    )
-)(createStore);
+            return newState;
+        }
+    });
+    createStoreWithMiddleware = compose(
+        applyMiddleware(
+            thunk, promiseMiddleware, logger
+        )
+    )(createStore);
+}
+
+if (_PRODUCTION_) {
+    createStoreWithMiddleware = compose(
+        applyMiddleware(
+            thunk, promiseMiddleware
+        )
+    )(createStore);
+}
 
 
 export default function configureStore(initialState) {

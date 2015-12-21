@@ -1,10 +1,10 @@
-import FactoryComponents from 'views/components/index'
-import GridList from 'material-ui/lib/grid-list/grid-list'
-import ContentActions from 'actions/content'
-import Connect from 'react-redux/lib/components/connect'
-import Mockup from 'mockups/index'
 import _has from 'lodash.has'
+import Connect from 'react-redux/lib/components/connect'
+import GridList from 'material-ui/lib/grid-list/grid-list'
 
+import FactoryComponents from 'views/components/index'
+
+import ContentActions from 'actions/content'
 import RequestActions from 'actions/request'
 
 
