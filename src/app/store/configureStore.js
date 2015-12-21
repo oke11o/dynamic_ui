@@ -6,7 +6,7 @@ import rootReducer from 'reducers'
 
 var createStoreWithMiddleware;
 
-if (_DEVELOPMENT_) {
+if (_DEVELOPMENT_ || _PRODUCTION_DEV_) {
     var createLogger = require('redux-logger');
     const logger = createLogger({
         stateTransformer: (state) => {
