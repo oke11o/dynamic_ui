@@ -19,11 +19,13 @@ export default function request(state = initialState, action) {
             return deleteRequest(state, action.data.id);
 
         case ActionType.REQUEST_REJECT:
-            let finded_request = state.getIn([
-                    'requests',
-                    state.get('requests').findIndex(request => request.get('id') === action.data.id),
-                    'instance'
-                ], Immutable.Map());
+            // TODO reject on id
+            if (action.data.type.length > 0) {
+                state.get('requests').filter(request => request.get('type') === action.data.type).forEach(request => {
+                    request.get('instance').abort();
+                });
+                return deleteRequest(state, null, action.data.type);
+            }
             return deleteRequest(state, action.data.id);
 
         default:
@@ -31,7 +33,10 @@ export default function request(state = initialState, action) {
     }
 }
 
-function deleteRequest(state, id) {
+function deleteRequest(state, id, type = '') {
+    if (type.length > 0) {
+        return state.set('requests', state.get('requests').filter(request => request.get('type') !== type));
+    }
     return state.deleteIn(
         ['requests', state.get('requests').findIndex(request => request.get('id') === id)]
     );

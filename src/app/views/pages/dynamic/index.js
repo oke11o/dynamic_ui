@@ -5,6 +5,9 @@ import Connect from 'react-redux/lib/components/connect'
 import Mockup from 'mockups/index'
 import _has from 'lodash.has'
 
+import RequestActions from 'actions/request'
+
+
 class DynamicPage extends React.Component {
     componentWillMount () {
 
@@ -29,9 +32,7 @@ class DynamicPage extends React.Component {
             }
 
         } else if (this.props.location !== nextProps.location) {
-            this.props.requests.filter(request => request.get('type') === 'content').forEach(request => {
-               request.get('instance').abort();
-            });
+            this.props.dispatch(RequestActions.abortRequests('content'));
             this.props.dispatch(ContentActions.fetch_content(nextProps.location));
         }
     }
