@@ -50,12 +50,13 @@ class SideBar extends Component {
 
     _onClickItem(item) {
         if (!_has(item, 'subroutes')) {
-            this.context.history.pushState(null, item.route);
+            this.props.onClickItemList(item);
         }
     }
 }
 SideBar.propTypes = {
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
+    onClickItemList: PropTypes.func.isRequired
 };
 
 SideBar.contextTypes = {

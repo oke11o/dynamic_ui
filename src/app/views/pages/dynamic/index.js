@@ -3,27 +3,34 @@ import GridList from 'material-ui/lib/grid-list/grid-list'
 import ContentActions from 'actions/content'
 import Connect from 'react-redux/lib/components/connect'
 import Mockup from 'mockups/index'
-
+import _has from 'lodash.has'
 
 class DynamicPage extends React.Component {
     componentWillMount () {
 
     }
     componentWillReceiveProps (nextProps) {
-        //if (this.props.location !== nextProps.location) {
-        //    this.props.dispatch(ContentActions.fetch_content(nextProps.location));
-        //}
-        //if (this.props.menu.length !== nextProps.menu.length && this.props.menu.every((element, index) => {
-        //        return element !== nextProps.menu[index]
-        //    })) {
-        //    for (var i = nextProps.menu.length - 1; i >= 0; i--) {
-        //        if (this.context.history.isActive(nextProps.menu[i].route, {}, true)) {
-        //            this.props.dispatch(ContentActions.fetch_content(nextProps.location));
-        //            return true;
-        //        }
-        //    }
-        //    this.props.dispatch(ContentActions.fetch_content({pathname: nextProps.menu[0].route}));
-        //}
+        if (this.props.menu.length !== nextProps.menu.length && this.props.menu.every((element, index) => {
+                return element !== nextProps.menu[index]
+            })) {
+            var searched = false;
+            for (var i = nextProps.menu.length - 1; i >= 0; i--) {
+                if (_has(nextProps.menu[i], 'route') && this.context.history.isActive(nextProps.menu[i].route, {}, true)) {
+                    this.props.dispatch(ContentActions.fetch_content(nextProps.location));
+                    searched = true;
+                    break;
+                }
+            }
+
+            if (!searched) {
+
+                // TODO check first element have property route
+
+                this.props.dispatch(ContentActions.fetch_content({pathname: nextProps.menu[0].route}));
+            }
+        } else if (this.props.location !== nextProps.location) {
+            this.props.dispatch(ContentActions.fetch_content(nextProps.location));
+        }
     }
     render() {
         return (

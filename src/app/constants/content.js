@@ -16,4 +16,6 @@ export const ActionType = keyMirror({
     PUSH_DATA: null,
     PUSH_DATA_COMPLETED: null,
     PUSH_DATA_FAILED: null
+
+
 });

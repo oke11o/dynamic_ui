@@ -8,7 +8,7 @@ import Content from './content'
 import MenuActions from 'actions/menu'
 import ContentActions from 'actions/content'
 import Connect from 'react-redux/lib/components/connect'
-
+import _has from 'lodash.has'
 var { ThemeManager, LightRawTheme } = Styles;
 var myRawTheme = LightRawTheme;
 
@@ -52,9 +52,14 @@ class App extends React.Component {
                 <Content>
                     {this.props.children}
                 </Content>
-                <Sidebar dispatch={this.props.dispatch}  items={this.props.menu}/>
+                <Sidebar onClickItemList={this._onClickItem.bind(this)} dispatch={this.props.dispatch}
+                         items={this.props.menu}/>
             </div>
         )
+    }
+
+    _onClickItem(item) {
+        this.context.history.pushState(null, item.route);
     }
 }
 

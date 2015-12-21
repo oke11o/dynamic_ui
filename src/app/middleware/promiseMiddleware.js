@@ -1,18 +1,45 @@
+var r_id = 0;
+
+
+
+
+
 export default function promiseMiddleware(store) {
     return (next) => (action) => {
 
-        const { promise, types, global = false, redirect404 = false, params = {}, redirectTo = false} = action;
+        const { promise,
+                  types,
+                  global = false,
+                  redirect404 = false,
+                  params = {},
+                  redirectTo = false,
+                  type_req = 'content'} = action;
+
 
         if (!promise) {
             return next(action);
         }
+
+
         const [REQUEST, SUCCESS, FAILURE] = types;
+
+
         if (global) {
             next({type: 'PAGE_LOADING'});
         }
+
+        const req_id = ++r_id;
+
+
         next({params, type: REQUEST});
-
-
+        next({
+            type: 'REQUEST',
+            data: {
+                id: req_id,
+                type: type_req,
+                instance: promise
+            }
+        });
         return promise.then((res) => {
             const RESPONSE = res.body;
 
@@ -27,6 +54,14 @@ export default function promiseMiddleware(store) {
                 params,
                 data: RESPONSE,
                 type: SUCCESS
+            });
+
+            next({
+                type: 'REQUEST_COMPLETED',
+                data: {
+                    id: req_id,
+                    type: type_req
+                }
             });
 
             if (redirectTo) {

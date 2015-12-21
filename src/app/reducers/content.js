@@ -1,20 +1,21 @@
 import {ActionType} from 'constants/content'
 
 const initialState = Immutable.Map({
-    components: [],
-    blocks: [],
-    page_loading: false,
-    refresh_blocks: []
+    components    : [],
+    blocks        : [],
+    page_loading  : false,
+    refresh_blocks: [],
+    requests      : Immutable.List()
 });
 
+var RequestRecord = Immutable.Record({
+    id      : undefined,
+    instance: undefined
+});
 
 export default function content(state = initialState, action) {
     switch (action.type) {
 
-    /**
-     * TODO
-     * for fetch cont
-     */
         case ActionType.FETCH_CONTENT:
             return state.set('components', []);
 
@@ -63,6 +64,13 @@ export default function content(state = initialState, action) {
 
         case ActionType.REFRESH_REQUEST_FAILED:
             return state;
+
+
+        case ActionType.REQUEST:
+            return state.set('requests', state.get('requests').push(new RequestRecord(action.data)));
+
+        case ActionType.REQUEST_COMPLETED:
+            return state.set('requests', state.get('re'))
 
         default:
             return state;

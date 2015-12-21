@@ -37,7 +37,7 @@ describe('Layout', () => {
 
 
         beforeEach(() => {
-            instance = TestUtils.renderIntoDocument(<SidebarComponent items={jsonSimple}/>);
+            instance = TestUtils.renderIntoDocument(<SidebarComponent onClickItemList={() => {}} items={jsonSimple}/>);
         });
 
 
@@ -53,7 +53,7 @@ describe('Layout', () => {
 
         it('There is five listItems', () => {
             chai.expect(TestUtils.scryRenderedComponentsWithType(instance, ListItem).length).to.be.equal(5);
-        })
+        });
 
 
     })

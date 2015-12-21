@@ -21,11 +21,11 @@ app.use(function (req, res, next) {
 app.get('/get-menu', function (req, res) {
     res.json([
         {
-            route: '/inputs',
-            text : 'Inputs'
-        }, {
             route: '/buttons',
             text : 'Buttons'
+        }, {
+            route: '/inputs',
+            text : 'Inputs'
         }, {
             divider: true
         }, {
