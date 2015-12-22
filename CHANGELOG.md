@@ -1,12 +1,20 @@
+## [v0.2.3]
+> December 22, 2015
+
+* **FIXED** Update refresh block
+
+
 ## [v0.2.2] 
 > December 22, 2015
 
 * **FIXED** Crashing refresh block.
 
+
 ## [v0.2.1] 
 > December 21, 2015
 
 * **FIXED** Generation type js output
+
 
 ## [v0.2.0] 
 > December 21, 2015

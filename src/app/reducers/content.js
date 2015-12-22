@@ -51,7 +51,7 @@ export default function content(state = initialState, action) {
 
 
         case ActionType.REFRESH_REQUEST:
-            return state.set('refresh_blocks', []);
+            return state
 
         case ActionType.REFRESH_REQUEST_COMPLETED:
             let refresh_blocks = [];

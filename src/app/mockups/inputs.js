@@ -59,18 +59,14 @@ module.exports = [
                     {
                         component_type: 'select',
                         value_member  : "id",
-                        label         : 'asd',
+                        hint_text     : 'asd',
                         cols          : 3,
                         items         : [
                             {
-                                id     : 1,
-                                payload: 1,
-                                name   : 'asd',
+                                id     : 0,
                                 text   : 'Never'
                             }, {
-                                id     : 2,
-                                payload: 2,
-                                name   : 'asd',
+                                id     : 1,
                                 text   : 'Nesver'
                             }
                         ]
