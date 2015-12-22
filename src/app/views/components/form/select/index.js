@@ -28,7 +28,7 @@ class Select extends React.Component {
     }
     _onChange (e, id, select) {
         this.setState({
-            id_selected: select.id
+            id_selected: select
         })
     }
 }

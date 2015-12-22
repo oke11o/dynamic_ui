@@ -1,3 +1,8 @@
+## [v0.2.4]
+> December 22, 2015
+
+* **FIXED** Change select
+
 ## [v0.2.3]
 > December 22, 2015
 
