@@ -1,6 +1,6 @@
 {
   "name": "dynamic-ui",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "This project was created for fast generate user interface from JSON data",
   "repository": "https://github.com/AnthonySchurov/dynamic_ui",
   "bugs": "https://github.com/AnthonySchurov/dynamic_ui/issues",
@@ -12,7 +12,7 @@
     "build": "node node_modules/@altarix/pxl-builder/src/build.js",
     "prepublish": "npm run test && npm run build && npm run build -- -e production_dev"
   },
-  "main": "public/dynamic-ui.js",
+  "main": "public/dynamic-ui.min.js",
   "devDependencies": {
     "@altarix/pxl-builder": "^1.0.0-rc-2",
     "babel-cli": "^6.1.18",

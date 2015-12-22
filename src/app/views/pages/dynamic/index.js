@@ -25,10 +25,12 @@ class DynamicPage extends React.Component {
                 }
             }
 
-            if (!searched) {
+            if (nextProps.location.pathname === '/' && !searched) {
 
                 // TODO check first element have property route
                 this.props.dispatch(ContentActions.fetch_content({pathname: nextProps.menu[0].route}));
+            } else {
+                this.props.dispatch(ContentActions.fetch_content(nextProps.location));
             }
 
         } else if (this.props.location !== nextProps.location) {

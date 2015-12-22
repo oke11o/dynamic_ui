@@ -60,7 +60,7 @@ export default function content(state = initialState, action) {
                 refresh_blocks.push(Object.assign(component, {id: action.params.destination}));
             });
 
-            return state.set('refresh_blocks', blocks);
+            return state.set('refresh_blocks', refresh_blocks);
 
         case ActionType.REFRESH_REQUEST_FAILED:
             return state;

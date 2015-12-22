@@ -5,7 +5,7 @@ module.exports = [
             {
                 component_type  : 'form',
                 to              : '/search_result',
-                redirect_to     : '/typography',
+                destination: 'search_result',
                 child_components: [
                     {
                         component_type  : 'paper',
