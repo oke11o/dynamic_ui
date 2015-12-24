@@ -6,11 +6,9 @@
   "bugs": "https://github.com/AnthonySchurov/dynamic_ui/issues",
   "license": "MIT",
   "scripts": {
-    "test": "mocha test/**/*.spec.js --compilers js:babel-core/register ",
-    "test:watch": "npm run test -- --watch",
     "run": "node node_modules/@altarix/pxl-builder/src/run.js",
     "build": "node node_modules/@altarix/pxl-builder/src/build.js",
-    "prepublish": "npm run test && npm run build && npm run build -- -e production_dev"
+    "prepublish": "npm run build && npm run build -- -e production_dev"
   },
   "main": "public/dynamic-ui.min.js",
   "devDependencies": {

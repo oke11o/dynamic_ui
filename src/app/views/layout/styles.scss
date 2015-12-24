@@ -1,3 +1,6 @@
+@import url("//fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic");
+@import url("//fonts.googleapis.com/icon?family=Material+Icons");
+@import url("//storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css");
 a {
     color: #ff4081;
     text-decoration: none;
@@ -23,4 +26,28 @@ body {
 .muidocs-checkbox-example {
     border: 2px solid #FF9800;
     background-color: #4CAF50;
+}
+
+.breadcrumbs {
+  li {
+    float: left;
+    list-style: none;
+    padding-right: 3px;
+    &.active {
+      a {
+        color: #FF4081;
+      }
+    }
+    &:after {
+      content: ' /'
+    }
+    &:last-child::after {
+      content: ''
+    }
+
+    a {
+      color: grey;
+      font-weight: 300;
+    }
+  }
 }

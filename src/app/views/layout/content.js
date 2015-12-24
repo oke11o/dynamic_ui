@@ -56,7 +56,20 @@ class Content extends React.Component {
                 <Loader loading={this.props.page_loading}/>
                 <Motion style={{opacity: spring(this.props.page_loading ? 0 : 1, [1000, 80])}}>
                     {(x) => {
-                        return <div style={x}>{this.props.children}</div>
+                        return <div style={x}>
+                            <div className="mdl-grid">
+                                <h3>Title</h3>
+                                <div className="mdl-layout-spacer"></div>
+                                <ul className="breadcrumbs">
+                                    <li className="">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li className=""><a href="#">Other page</a></li>
+                                    <li className="active"><a href="#">Current page</a></li>
+                                </ul>
+                            </div>
+                            {this.props.children}
+                        </div>
                     }}
                 </Motion>
             </div>
