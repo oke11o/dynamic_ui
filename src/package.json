@@ -53,6 +53,7 @@
     "get-form-data": "^1.2.4",
     "history": "^1.13.1",
     "immutable": "^3.7.5",
+    "inputmask-core": "^2.1.1",
     "keymirror": "^0.1.1",
     "lodash.has": "^3.2.1",
     "material-ui": "^0.14.0-rc2",

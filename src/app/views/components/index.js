@@ -90,6 +90,9 @@ class Factory {
             errorStyle            : props.error_style,
             multiLine             : props.multi_line,
             disabled              : props.disabled,
+            mask                  : props.mask,
+            placeholder           : props.placeholder,
+            regexp                : props.regexp,
             type                  : props.type,
             cols                  : props.cols || 12,
             name                  : props.name

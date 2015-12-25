@@ -13,10 +13,13 @@ module.exports = [
                 child_components: [
                     {
                         component_type: 'input',
+                        regexp: '/[0-9]/i',
+                        error_text: 'Suka blyat',
                         hint_text: 'Hint Text'
                     }, {
                         component_type: 'input',
-                        hint_text: 'Styled Hint Text',
+                        mask: '+7(999)999-99-99',
+                        placeholder: '+7(123)456-78-90',
                         hint_style: {
                             color: 'red'
                         }
@@ -58,7 +61,6 @@ module.exports = [
                 child_components: [
                     {
                         component_type: 'select',
-                        value_member  : "id",
                         hint_text     : 'asd',
                         cols          : 3,
                         items         : [
