@@ -1,8 +1,7 @@
+import _has from 'lodash.has'
+
+// TODO it's vvveeery bad!!!
 var r_id = 0;
-
-
-
-
 
 export default function promiseMiddleware(store) {
     return (next) => (action) => {
@@ -43,37 +42,60 @@ export default function promiseMiddleware(store) {
         return promise.then((res) => {
             const RESPONSE = res.body;
 
-            if (Object.prototype.toString.call(RESPONSE) !== '[object Array]') {
-                next({
-                    params,
-                    type: FAILURE
-                })
+            if (!_has(RESPONSE, 'status')) {
+                throw new Error('API not returned data of the format JSEND');
             }
 
-            next({
-                params,
-                data: RESPONSE,
-                type: SUCCESS
-            });
+            const STATUS = RESPONSE.status;
 
-            next({
-                type: 'REQUEST_COMPLETED',
-                data: {
-                    id: req_id,
-                    type: type_req
-                }
-            });
 
-            if (redirectTo) {
-                store.getState().history.get('history').pushState(null, redirectTo);
+
+            // TODO catch response with status fail and error. Need fix!
+            switch (STATUS) {
+                case 'success':
+
+                    if (!_has(RESPONSE, 'data')) throw new Error('API not returned response data of the format JSEND');
+
+                    next({
+                        params,
+                        data: RESPONSE.data,
+                        type: SUCCESS
+                    });
+                    next({
+                        type: 'REQUEST_COMPLETED',
+                        data: {
+                            id: req_id,
+                            type: type_req
+                        }
+                    });
+
+
+                    if (global) {
+                        next({
+                            type: 'PAGE_LOADING_COMPLETED'
+                        });
+                    }
+
+                    if (redirectTo) {
+                        store.getState().history.get('history').pushState(null, redirectTo);
+                    }
+
+                    break;
+
+                case 'fail':
+                case 'error':
+                    next({
+                        params,
+                        type: FAILURE
+                    });
+
+                    next({
+                        type: 'PAGE_LOADING_FAILED'
+                    });
+                    break;
             }
 
 
-            if (global) {
-                next({
-                    type: 'PAGE_LOADING_COMPLETED'
-                });
-            }
             return null
         }).catch((e) => {
             next({

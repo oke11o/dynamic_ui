@@ -19,38 +19,41 @@ app.use(function (req, res, next) {
 });
 
 app.get('/get-menu', function (req, res) {
-    res.json([
-        {
-            route: '/buttons',
-            text : 'Buttons'
-        }, {
-            route: '/inputs',
-            text : 'Inputs'
-        }, {
-            divider: true
-        }, {
-            route: '/grids',
-            text: 'Grids'
-        }, {
-            route: '/typography',
-            text: 'Typography'
-        }, {
-            route: '/table',
-            text: 'Table'
-        }, {
-            route: '/search',
-            text: 'Search'
-        }, {
-            route: '/download',
-            text: 'download via ajax',
-            subroutes: [
-                {
-                    route: '/asd',
-                    text: 'asdasd'
-                }
-            ]
-        }
-    ])
+    res.json({
+        status: "success",
+        data  : [
+            {
+                route: '/buttons',
+                text : 'Buttons'
+            }, {
+                route: '/inputs',
+                text : 'Inputs'
+            }, {
+                divider: true
+            }, {
+                route: '/grids',
+                text : 'Grids'
+            }, {
+                route: '/typography',
+                text : 'Typography'
+            }, {
+                route: '/table',
+                text : 'Table'
+            }, {
+                route: '/search',
+                text : 'Search'
+            }, {
+                route    : '/download',
+                text     : 'download via ajax',
+                subroutes: [
+                    {
+                        route: '/asd',
+                        text : 'asdasd'
+                    }
+                ]
+            }
+        ]
+    })
 });
 
 app.get('/inputs', function (req, res) {
