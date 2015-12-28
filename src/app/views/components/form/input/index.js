@@ -389,7 +389,7 @@ class Input extends React.Component {
 
         var errorText = this.state.valid ? null : this.props.errorText || 'Ошибка!';
 
-        var hint = this.props.mask ? null : this.props.hintText;
+        var hint = this.props.mask || this.state.value ? null : this.props.hintText; //TODO (this.state.value removes hintText of a bug in onChange)
 
         var value = this.props.mask ? this.state.value : this.props.value;
 
@@ -441,7 +441,8 @@ class Input extends React.Component {
     _onChange(e){
 
         this.setState({
-            valid: this.onValidate(e.target.value)
+            valid: this.onValidate(e.target.value),
+            value: e.target.value
         });
 
         if(!this.props.mask) return;
