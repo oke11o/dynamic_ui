@@ -137,5 +137,25 @@ app.get('/refresh_block', function (req,res) {
     res.json(refresh_block)
 });
 
+app.get('/test_success', function (req, res) {
+  res.json({
+    errorCode: 0,
+    errorMessage: '',
+    result: [
+      {
+        status: 'ook'
+      }
+    ]
+  })
+})
+
+app.get('/test_failed', function (req, res) {
+  res.json({
+    errorCode: 500,
+    errorMessage: '=(',
+    result: null
+  })
+})
+
 var server = app.listen(3000, '0.0.0.0', function () {
 });

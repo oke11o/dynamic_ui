@@ -1,4 +1,6 @@
-module.exports = [
+module.exports = {
+    status: "success",
+    data  : [
     {
         component_type  : 'grid',
         child_components: [
@@ -44,4 +46,5 @@ module.exports = [
             }
         ]
     }
-];
+    ]
+};

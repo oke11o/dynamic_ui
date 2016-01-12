@@ -1,4 +1,6 @@
-module.exports = [
+module.exports = {
+    status: "success",
+    data: [
     {
         component_type: 'text',
         tag: 'h1',
@@ -137,4 +139,5 @@ module.exports = [
         id: 'ttt',
         child_component: []
     }
-];
+    ]
+};

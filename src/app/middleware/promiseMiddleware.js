@@ -97,7 +97,7 @@ export default function promiseMiddleware(store) {
 
 
             return null
-        }).catch((e) => {
+        }).catch(e => {
             next({
                 params,
                 type: FAILURE
